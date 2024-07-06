@@ -7,7 +7,21 @@ def homework():
     iris = load_iris()
     scoreModel = None
     # YOUR CODE HERE
+    X=iris.data
+    y=iris.target
 
+    from sklearn.neural_network import MLPClassifier
+    nn = MLPClassifier(solver='lbfgs', alpha=1e-5,
+                   hidden_layer_sizes=(10,10),
+                   random_state= 10,
+                   max_iter = 5000,
+                   tol=0.00001)
+
+
+    nn.fit(X,y)
+    nn.score(X,y)
+    scoreModel = nn.score(X,y)
+    
     return scoreModel
 
 
